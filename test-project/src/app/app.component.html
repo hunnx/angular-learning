@@ -271,7 +271,6 @@
             height="24"
             viewBox="0 0 25 24"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
             alt="Github"
           >
             <path
@@ -324,6 +323,7 @@
   </div>
 </main>
 
+<app-user-profile *ngFor ="let u of users" [name] = "u.name" [salary]="u.salary" (myEvent)="receiveData($event)"></app-user-profile>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
