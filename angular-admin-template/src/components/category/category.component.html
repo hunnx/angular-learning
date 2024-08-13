@@ -1,0 +1,37 @@
+<div>
+    <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        class="form-control mb-3"
+        placeholder="Search categories"
+    />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Category Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of filteredCategories()">
+                <td>{{ category.name }}</td>
+                <td>
+                    <a
+                        class="btn btn-secondary me-2"
+                        [routerLink]="['/category/edit', category.id]"
+                        role="button"
+                    >
+                        Edit
+                    </a>
+                    <button
+                        class="btn btn-danger"
+                        (click)="deleteCategory(category.id)"
+                    >
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" [routerLink]="'/category/add'">Add Category</button>
+</div>
