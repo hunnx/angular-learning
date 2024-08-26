@@ -32,4 +32,9 @@ export class CategoryService {
   deleteCategory(id: number) {
     this.categories = this.categories.filter(category => category.id !== id);
   }
+
+  getCategoryNameById(id: number): string | undefined {
+    const category = this.getCategoryById( Number(id));
+    return category ? category.name : undefined;
+  }
 }
