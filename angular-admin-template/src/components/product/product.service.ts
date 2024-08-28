@@ -1,10 +1,11 @@
+import { NumberInput } from '@angular/cdk/coercion';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private products: { id: number; name: string; price: number; categoryId: number; categoryName: string }[] = [];
+  private products: { id: number; name: string; price: number; quantity:number;  categoryId: number; categoryName: string }[] = [];
   private currentId = 1;
 
   constructor() {
@@ -31,14 +32,16 @@ export class ProductService {
   }
 
   // Add a new product
-  addProduct(name: string, price: number, categoryId: number, categoryName: string) {
+  addProduct(name: string, price: number,quantity:number, categoryId: number, categoryName: string) {
     const newProduct = {
       id: this.currentId++,
       name: name,
       price: price,
+      quantity :quantity,
       categoryId,
       categoryName
     };
+    console.log(newProduct)
     this.products.push(newProduct);
     this.saveProducts(); // Save after adding a new product
   }
@@ -49,7 +52,7 @@ export class ProductService {
   }
 
   // Update a product
-  updateProduct(id: number, updatedProduct: { id: number; name: string; price: number; categoryId: number; categoryName: string }) {
+  updateProduct(id: number, updatedProduct: { id: number; name: string;quantity:number; price: number; categoryId: number; categoryName: string }) {
     const index = this.products.findIndex(product => product.id === id);
     if (index > -1) {
       this.products[index] = updatedProduct;

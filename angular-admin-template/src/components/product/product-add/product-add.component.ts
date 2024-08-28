@@ -13,7 +13,7 @@ import { CategoryService } from 'src/app/category.service';
   styleUrls: ['./product-add.component.scss']
 })
 export class ProductAddComponent implements OnInit {
-  product = { name: '', price: 0, categoryId: 0, categoryName: '' };
+  product = { name: '', price: 0,quantity:0, categoryId: 0, categoryName: '' };
   categories = [];
   showAddCategoryForm = false;
   newCategoryName = '';
@@ -35,7 +35,8 @@ export class ProductAddComponent implements OnInit {
     } else {
       const categoryName = this.categoryService.getCategoryNameById(this.product.categoryId);
       this.product.categoryName = categoryName; // Set category name for the product
-      this.productService.addProduct(this.product.name, this.product.price, this.product.categoryId, categoryName);
+      console.log(this.product);
+      this.productService.addProduct(this.product.name,this.product.price,this.product.quantity, this.product.categoryId, categoryName);
       this.router.navigate(['/product']);
     }
   }

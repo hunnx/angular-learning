@@ -13,7 +13,7 @@ import { CategoryService } from 'src/app/category.service';
   styleUrls: ['./product-edit.component.scss']
 })
 export class ProductEditComponent implements OnInit {
-  product = { id: 0, name: '', price: 0, categoryId: 0, categoryName:"" };
+  product = { id: 0, name: '',quantity: 0, price: 0, categoryId: 0, categoryName:"" };
   categories = [];
   showAddCategoryForm = false;
   newCategoryName = '';
@@ -53,6 +53,7 @@ export class ProductEditComponent implements OnInit {
       this.productService.updateProduct(this.product.id, {
         id: this.product.id,
         name: this.product.name,
+        quantity:this.product.quantity,
         price: this.product.price,
         categoryId: this.product.categoryId,
         categoryName: this.product.categoryName
