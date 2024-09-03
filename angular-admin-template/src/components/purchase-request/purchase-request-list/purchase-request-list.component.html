@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <h2 class="mb-4">Purchase Request List</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Status</th>
+          <th>Items Count</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of purchaseRequests">
+          <td>{{ request.id }}</td>
+          <td>{{ request.status }}</td>
+          <td>{{ request.items.length }}</td>
+          <td>
+            <button (click)="deletePurchaseRequest(request.id)" class="btn btn-danger btn-sm me-2">Delete</button>
+            <a [routerLink]="['/purchase-request/purchase-request-edit', request.id]" class="btn btn-warning btn-sm me-2">Edit</a>
+            <a [routerLink]="['/purchase-request/purchase-request-detail', request.id]" class="btn btn-info btn-sm">View</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a routerLink="/purchase-request/create" class="btn btn-success">Add Purchase Request</a>
+  </div>
+  

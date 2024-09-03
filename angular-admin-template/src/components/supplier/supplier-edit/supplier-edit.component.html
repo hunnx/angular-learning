@@ -1,0 +1,22 @@
+<div class="container mt-4">
+    <h2 class="mb-4">Edit Supplier</h2>
+    <form *ngIf="supplier" (ngSubmit)="updateSupplier()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="supplier.name" name="name" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="text" class="form-control" id="phone" [(ngModel)]="supplier.phone" name="phone" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" class="form-control" id="address" [(ngModel)]="supplier.address" name="address" required>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Update Supplier</button>
+    </form>
+  </div>
+  

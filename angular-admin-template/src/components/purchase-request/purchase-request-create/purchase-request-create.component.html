@@ -1,0 +1,131 @@
+<div class="container mt-4">
+    <h2>Create Purchase Request</h2>
+  
+    <form (ngSubmit)="createPurchaseRequest()">
+      <div class="mb-3">
+      <div class="row">
+        <div class="col-4">
+        <label for="status" class="form-label">Status</label>
+        <select class="form-select" id="status" [(ngModel)]="purchaseRequest.status" name="status" required>
+            <option value="Pending">Pending</option>
+            <option value="Approved">Approved</option>
+            <option value="Rejected">Rejected</option>
+            <option value="Completed">Completed</option>
+          </select>
+      </div>
+      </div>
+    </div>
+  
+      <div class="mb-3">
+        <h4>Add Items</h4>
+        <div class="row">
+          <div class="col-md-3">
+<!-- Searchable Product Dropdown -->
+<label for="productSearch" class="form-label">Search Product</label>
+<select id="productSelect" style="width: 100%" (change)="onProductSelect($event)">
+    <option *ngFor="let product of products" [value]="product.id">{{ product.name }}</option>
+    <option value="new">Add New Product</option>
+
+  </select>
+
+<!-- Add New Product Form -->
+<!-- Add New Product Form -->
+<div *ngIf="showProductForm" class="container mt-4">
+  <h4 class="mb-3">Add New Product</h4>
+  <form (ngSubmit)="onAddProduct()">
+    <div class="mb-3">
+      <label for="productName" class="form-label">Product Name</label>
+      <input type="text" id="productName" class="form-control" [(ngModel)]="newProductName" name="productName" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="productPrice" class="form-label">Product Price</label>
+      <input type="number" id="productPrice" class="form-control" [(ngModel)]="newProductPrice" name="productPrice" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="productQuantity" class="form-label">Product Quantity</label>
+      <input type="number" id="productQuantity" class="form-control" [(ngModel)]="newProductQuantity" name="productQuantity" required>
+    </div>
+<!-- 
+    <div class="mb-3">
+      <label for="productCategoryId" class="form-label">Product Category ID</label>
+      <input type="number" id="productCategoryId" class="form-control" [(ngModel)]="newProductCategoryId" name="productCategoryId" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="productCategoryName" class="form-label">Product Category Name</label>
+      <input type="text" id="productCategoryName" class="form-control" [(ngModel)]="newProductCategoryName" name="productCategoryName" required>
+    </div> -->
+
+
+    <div class="mb-3">
+        <label for="category" class="form-label">Category:</label>
+        <select
+            id="productCategoryId"
+            [(ngModel)]="newProductCategoryId"
+            name="productCategoryId"
+            class="form-select form-control"
+            required
+        >
+        <option value="" disabled>Select Category</option>
+            <option *ngFor="let category of categories" [value]="category.id">
+                {{ category.name }}
+            </option>
+        </select>
+        <div class="invalid-feedback">
+            Please select a category.
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Product</button>
+  </form>
+</div>
+
+  
+
+          </div>
+          <div class="col-md-2">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input type="number" class="form-control" id="quantity" [(ngModel)]="newItem.quantity" name="quantity" required min="1">
+          </div>
+          <div class="col-md-3">
+            <label for="unitPrice" class="form-label">Unit Price</label>
+            <input type="number" class="form-control" id="unitPrice" [(ngModel)]="newItem.unitPrice" name="unitPrice" required min="0">
+          </div>
+          <div class="col-md-3">
+            <label for="tradePrice" class="form-label">Trade Price</label>
+            <input type="number" class="form-control" id="tradePrice" [(ngModel)]="newItem.tradePrice" name="tradePrice" required min="0">
+          </div>
+          <div class="col-md-1">
+            <button type="button" class="btn btn-primary mt-4" (click)="addItem()">Add</button>
+          </div>
+        </div>
+      </div>
+  
+      <div *ngIf="purchaseRequest.items.length > 0" class="mb-3">
+        <h4>Items List</h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Quantity</th>
+              <th>Unit Price</th>
+              <th>Trade Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of purchaseRequest.items">
+              <td>{{ item.productId }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.unitPrice }}</td>
+              <td>{{ item.tradePrice }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <button type="submit" class="btn btn-success">Create Purchase Request</button>
+    </form>
+  </div>
+  

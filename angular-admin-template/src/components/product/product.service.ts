@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ProductService {
+
+  
   private products: { id: number; name: string; price: number; quantity:number;  categoryId: number; categoryName: string }[] = [];
   private currentId = 1;
 

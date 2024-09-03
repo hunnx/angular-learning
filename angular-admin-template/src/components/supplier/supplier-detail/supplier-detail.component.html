@@ -1,0 +1,11 @@
+<div class="container mt-4">
+    <h2 class="mb-4">Supplier Details</h2>
+    <div *ngIf="supplier" class="card">
+      <div class="card-body">
+        <p class="card-text"><strong>Name:</strong> {{ supplier.name }}</p>
+        <p class="card-text"><strong>Phone:</strong> {{ supplier.phone }}</p>
+        <p class="card-text"><strong>Address:</strong> {{ supplier.address }}</p>
+      </div>
+    </div>
+  </div>
+  

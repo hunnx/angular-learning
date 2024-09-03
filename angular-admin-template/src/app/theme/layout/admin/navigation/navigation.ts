@@ -87,7 +87,40 @@ const NavigationItems = [
         classes: 'nav-item',
         url: '/product',
         icon: 'ti ti-tags'
+      },
+      {
+        id: 'sales',
+        title: 'Sales',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/sales',
+        icon: 'ti ti-shopping-cart-plus'
+      },
+      {
+        id: 'orders',
+        title: 'Orders',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/orders',
+        icon: 'ti ti-package-export'
+      },
+      {
+        id: 'supplier',
+        title: 'Supplier',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/supplier',
+        icon: 'ti ti-truck-delivery'
+      },
+      {
+        id: 'purchase-request',
+        title: 'Purchase Request',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/purchase-request',
+        icon: 'ti ti-restore'
       }
+      
     ]
   },
   {

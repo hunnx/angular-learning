@@ -20,6 +20,11 @@ import { ConfigurationComponent } from './theme/layout/admin/configuration/confi
 import { GuestComponent } from './theme/layout/guest/guest.component';
 import { CategoryAddComponent } from 'src/components/category/category-add/category-add.component';
 import { CategoryEditComponent } from 'src/components/category/category-edit/category-edit.component';
+import { SalesComponent } from 'src/components/sales/sales.component';
+import { OrderListComponent } from 'src/components/orders/order-list/order-list.component';
+import { OrderDetailsComponent } from 'src/components/orders/order-details/order-details.component';
+import { OrderCreateComponent } from 'src/components/orders/order-create/order-create.component';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +42,7 @@ import { CategoryEditComponent } from 'src/components/category/category-edit/cat
     ConfigurationComponent,
     GuestComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule,CategoryAddComponent,CategoryEditComponent],
+  imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule,CategoryAddComponent,CategoryEditComponent,SalesComponent,OrderListComponent,OrderDetailsComponent,OrderCreateComponent],
   providers: [NavigationItem],
   bootstrap: [AppComponent]
 })

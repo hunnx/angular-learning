@@ -35,7 +35,6 @@ export class ProductAddComponent implements OnInit {
     } else {
       const categoryName = this.categoryService.getCategoryNameById(this.product.categoryId);
       this.product.categoryName = categoryName; // Set category name for the product
-      console.log(this.product);
       this.productService.addProduct(this.product.name,this.product.price,this.product.quantity, this.product.categoryId, categoryName);
       this.router.navigate(['/product']);
     }

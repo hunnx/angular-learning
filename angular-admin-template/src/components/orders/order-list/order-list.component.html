@@ -1,0 +1,28 @@
+<!-- order-list.component.html -->
+<div class="mt-4">
+    <h2>Order List</h2>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Order ID</th>
+          <th scope="col">Date</th>
+          <th scope="col">Customer Name</th>
+          <th scope="col">Total Amount</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.id }}</td>
+          <td>{{ order.date | date }}</td>
+          <td>{{ order.customerName ? order.customerName : 'Visitor'}}</td>
+          <td>${{ order.totalAmount }}</td>
+          <td>
+            <button class="btn btn-info btn-sm me-3" [routerLink]="['/orders', order.id]">View</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteOrder(order.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

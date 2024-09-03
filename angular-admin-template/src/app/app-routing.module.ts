@@ -9,6 +9,25 @@ import { CategoryEditComponent } from 'src/components/category/category-edit/cat
 import { CategoryListComponent } from 'src/components/category/category.component';
 import { ProductAddComponent } from 'src/components/product/product-add/product-add.component';
 import { ProductEditComponent } from 'src/components/product/product-edit/product-edit.component';
+import { SalesComponent } from 'src/components/sales/sales.component';
+
+import { OrderDetailsComponent } from 'src/components/orders/order-details/order-details.component';
+import { OrderCreateComponent } from 'src/components/orders/order-create/order-create.component';
+import { OrderListComponent } from 'src/components/orders/order-list/order-list.component';
+
+import { SupplierCreateComponent } from 'src/components/supplier/supplier-create/supplier-create.component';
+import { SupplierDetailComponent } from 'src/components/supplier/supplier-detail/supplier-detail.component';
+import { SupplierListComponent } from 'src/components/supplier/supplier-list/supplier-list.component';
+import { SupplierEditComponent } from 'src/components/supplier/supplier-edit/supplier-edit.component';
+
+ import { PurchaseRequestListComponent } from 'src/components/purchase-request/purchase-request-list/purchase-request-list.component';
+ import { PurchaseRequestCreateComponent } from 'src/components/purchase-request/purchase-request-create/purchase-request-create.component';
+ //import { PurchaseRequestCreateComponent } from 'src/components/purchase-request/purchase-request-create/purchase-request-create.component'
+/*import { PurchaseRequestDetailComponent } from 'src/components/purchase-request/detail/detail.component';
+//import { PurchaseRequestCreateComponent } from 'src/components/purchase-request/create/create.component';
+import { PurchaseRequestEditComponent } from 'src/components/purchase-request/edit/edit.component';
+import { PurchaseRequestCreateComponent } from 'src/components/purchase-request/create/create.component'; */
+
 
 const routes: Routes = [
   {
@@ -60,6 +79,25 @@ const routes: Routes = [
         path: 'product/edit/:id',
           component:ProductEditComponent  
       },
+      {
+        path: 'sales',
+          component:SalesComponent 
+      },
+      { path: 'orders', component: OrderListComponent },
+      { path: 'orders/create', component: OrderCreateComponent },
+      { path: 'orders/:id', component: OrderDetailsComponent },
+
+      { path: 'supplier', component: SupplierListComponent },
+      { path: 'supplier/create', component: SupplierCreateComponent },
+      { path: 'supplier/edit/:id', component: SupplierEditComponent },
+      { path: 'supplier/detail/:id', component: SupplierDetailComponent },
+
+    { path: 'purchase-request', component: PurchaseRequestListComponent },
+    { path: 'purchase-request/create', component: PurchaseRequestCreateComponent },
+    /*  { path: 'purchase-request/edit/:id', component: PurchaseRequestEditComponent },
+      { path: 'purchase-request/detail/:id', component: PurchaseRequestDetailComponent }, */
+
+      
     ]
   },
   {
