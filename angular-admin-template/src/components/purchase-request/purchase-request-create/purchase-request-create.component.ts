@@ -51,16 +51,23 @@ export class PurchaseRequestCreateComponent implements AfterViewInit {
     });
 
     // Bind Select2 change event
-    $('#productSelect').on('change', (e: any) => {
-      console.log('d');
-      const selectedValue = $(e.target).val();
-      if (selectedValue === 'new') {
-        this.showProductForm = true;
-      } else {
-        this.showProductForm = false;
-        // Handle existing product selection if needed
-      }
-    });
+   // Handle Select2 change event
+   $('#productSelect').on('change', (e: any) => {
+    const selectedValue = $(e.target).val();
+    console.log(selectedValue);
+    
+    if (selectedValue === 'new') {
+      this.showProductForm = true;
+      this.newItem.productId = null;
+    } else {
+      this.showProductForm = false;
+      this.newItem.productId = selectedValue;  // Update productId
+    }
+
+    // Update the hidden input field
+    $('#hiddenProductId').val(selectedValue).trigger('input');
+  });
+  
   }
 
   ngOnDestroy() {
@@ -115,7 +122,6 @@ export class PurchaseRequestCreateComponent implements AfterViewInit {
 
  
   onProductSelect(event: Event) {
-    console.log('s');
     const target = event.target as HTMLSelectElement;
     const selectedValue = target.value;
 
@@ -197,6 +203,7 @@ export class PurchaseRequestCreateComponent implements AfterViewInit {
       unitPrice: 0,
       tradePrice: 0
     };
+    $('#productSelect').val(null).trigger('change');  // Reset Select2
   }
 
   createPurchaseRequest() {
@@ -219,6 +226,9 @@ export class PurchaseRequestCreateComponent implements AfterViewInit {
     }
   }
 
+  deleteItem(index: number): void {
+    this.purchaseRequest.items.splice(index, 1);
+  }
   
     // Initialize Select2
    

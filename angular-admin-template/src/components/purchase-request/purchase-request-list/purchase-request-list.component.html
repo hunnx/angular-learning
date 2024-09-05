@@ -16,8 +16,8 @@
           <td>{{ request.items.length }}</td>
           <td>
             <button (click)="deletePurchaseRequest(request.id)" class="btn btn-danger btn-sm me-2">Delete</button>
-            <a [routerLink]="['/purchase-request/purchase-request-edit', request.id]" class="btn btn-warning btn-sm me-2">Edit</a>
-            <a [routerLink]="['/purchase-request/purchase-request-detail', request.id]" class="btn btn-info btn-sm">View</a>
+            <a [routerLink]="['edit/', request.id]" class="btn btn-warning btn-sm me-2">Edit</a>
+            <a [routerLink]="['detail/', request.id]" class="btn btn-info btn-sm">View</a>
           </td>
         </tr>
       </tbody>

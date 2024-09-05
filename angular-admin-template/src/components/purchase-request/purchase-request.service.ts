@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 import { PurchaseRequest, PurchaseRequestItem } from './purchase-request.model'; // Create this model file
 
 
@@ -11,7 +13,7 @@ export class PurchaseRequestService {
   private purchaseRequests: PurchaseRequest[] = []; // Initialize with an empty array
   private nextId: number = 1; // Initialize nextId with the starting ID
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
   getPurchaseRequests(): Observable<PurchaseRequest[]> {
     return of(this.purchaseRequests);
@@ -37,4 +39,9 @@ export class PurchaseRequestService {
   deletePurchaseRequest(id: number): void {
     this.purchaseRequests = this.purchaseRequests.filter(pr => pr.id !== id);
   }
+  //constructor() {}
+ /*  private apiUrl = 'YOUR_API_URL_HERE/purchase-requests'; // Replace with your API endpoint
+  getPurchaseRequestById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  } */
 }

@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './theme/layout/admin/admin.component';
 import { GuestComponent } from './theme/layout/guest/guest.component';
 import { ProductComponent } from 'src/components/product/product.component';
+
 import { CategoryAddComponent } from 'src/components/category/category-add/category-add.component';
 import { CategoryEditComponent } from 'src/components/category/category-edit/category-edit.component';
-//import { CategoryListComponent } from 'src/components/category/category.component';
 import { CategoryListComponent } from 'src/components/category/category.component';
+
 import { ProductAddComponent } from 'src/components/product/product-add/product-add.component';
 import { ProductEditComponent } from 'src/components/product/product-edit/product-edit.component';
+
 import { SalesComponent } from 'src/components/sales/sales.component';
 
 import { OrderDetailsComponent } from 'src/components/orders/order-details/order-details.component';
@@ -22,11 +24,9 @@ import { SupplierEditComponent } from 'src/components/supplier/supplier-edit/sup
 
  import { PurchaseRequestListComponent } from 'src/components/purchase-request/purchase-request-list/purchase-request-list.component';
  import { PurchaseRequestCreateComponent } from 'src/components/purchase-request/purchase-request-create/purchase-request-create.component';
- //import { PurchaseRequestCreateComponent } from 'src/components/purchase-request/purchase-request-create/purchase-request-create.component'
-/*import { PurchaseRequestDetailComponent } from 'src/components/purchase-request/detail/detail.component';
-//import { PurchaseRequestCreateComponent } from 'src/components/purchase-request/create/create.component';
-import { PurchaseRequestEditComponent } from 'src/components/purchase-request/edit/edit.component';
-import { PurchaseRequestCreateComponent } from 'src/components/purchase-request/create/create.component'; */
+import { PurchaseRequestEditComponent } from 'src/components/purchase-request/purchase-request-edit/purchase-request-edit.component';
+import { PurchaseRequestDetailComponent } from 'src/components/purchase-request/purchase-request-detail/purchase-request-detail.component';
+
 
 
 const routes: Routes = [
@@ -94,8 +94,8 @@ const routes: Routes = [
 
     { path: 'purchase-request', component: PurchaseRequestListComponent },
     { path: 'purchase-request/create', component: PurchaseRequestCreateComponent },
-    /*  { path: 'purchase-request/edit/:id', component: PurchaseRequestEditComponent },
-      { path: 'purchase-request/detail/:id', component: PurchaseRequestDetailComponent }, */
+     { path: 'purchase-request/edit/:id', component: PurchaseRequestEditComponent },
+      { path: 'purchase-request/detail/:id', component: PurchaseRequestDetailComponent },
 
       
     ]
