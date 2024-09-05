@@ -22,11 +22,12 @@
           <div class="col-md-3">
 <!-- Searchable Product Dropdown -->
 <label for="productSearch" class="form-label">Search Product</label>
-<select id="productSelect" style="width: 100%" (change)="onProductSelect($event)">
-    <option *ngFor="let product of products" [value]="product.id">{{ product.name }}</option>
-    <option value="new">Add New Product</option>
-
-  </select>
+<select id="productSelect" style="width: 100%" [(ngModel)]="newItem.productId" name="productId" (change)="onProductSelect($event)">
+  <option *ngFor="let product of products" [value]="product.id">{{ product.name }}</option>
+  <option value="new">Add New Product</option>
+</select>
+ <!-- Hidden field to store selected product ID -->
+ <input type="hidden" id="hiddenProductId" [(ngModel)]="newItem.productId" name="hiddenProductId" />
 
 <!-- Add New Product Form -->
 <!-- Add New Product Form -->
@@ -112,14 +113,19 @@
               <th>Quantity</th>
               <th>Unit Price</th>
               <th>Trade Price</th>
+              <th>Actions</th> <!-- New column for delete button -->
+
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of purchaseRequest.items">
+            <tr *ngFor="let item of purchaseRequest.items; let i = index">
               <td>{{ item.productId }}</td>
               <td>{{ item.quantity }}</td>
               <td>{{ item.unitPrice }}</td>
               <td>{{ item.tradePrice }}</td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteItem(i)">Delete</button>
+              </td>
             </tr>
           </tbody>
         </table>
