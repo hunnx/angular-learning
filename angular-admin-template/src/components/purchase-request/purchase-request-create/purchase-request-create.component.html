@@ -109,7 +109,7 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Product ID</th>
+              <th>Product Name</th>
               <th>Quantity</th>
               <th>Unit Price</th>
               <th>Trade Price</th>
@@ -119,7 +119,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of purchaseRequest.items; let i = index">
-              <td>{{ item.productId }}</td>
+              <td>{{ getProductById(item.productId)?.name }}</td>
+
               <td>{{ item.quantity }}</td>
               <td>{{ item.unitPrice }}</td>
               <td>{{ item.tradePrice }}</td>

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-
 import { PurchaseRequest, PurchaseRequestItem } from './purchase-request.model'; // Create this model file
 
 
@@ -12,9 +10,13 @@ export class PurchaseRequestService {
 
   private purchaseRequests: PurchaseRequest[] = []; // Initialize with an empty array
   private nextId: number = 1; // Initialize nextId with the starting ID
-
-  constructor(private http: HttpClient) {}
-
+  products: any[] = [];
+  newItem: any = { productId: '', quantity: 1, unitPrice: 0, tradePrice: 0 };
+  
+  constructor() {
+    this.loadProducts();
+    this.loadPurchaseRequests(); // Load existing purchase requests from localStorage
+  }
   getPurchaseRequests(): Observable<PurchaseRequest[]> {
     return of(this.purchaseRequests);
   }
@@ -23,10 +25,18 @@ export class PurchaseRequestService {
     const request = this.purchaseRequests.find(pr => pr.id === id);
     return of(request);
   }
-
+// Load products from localStorage
+loadProducts(): void {
+  const storedProducts = localStorage.getItem('products');
+  if (storedProducts) {
+    this.products = JSON.parse(storedProducts);
+  }
+}
   addPurchaseRequest(request: PurchaseRequest): void {
     request.id = this.nextId++;
     this.purchaseRequests.push(request);
+    localStorage.setItem('purchaseRequests', JSON.stringify(this.purchaseRequests));
+
   }
 
   updatePurchaseRequest(updatedRequest: PurchaseRequest): void {
@@ -39,9 +49,12 @@ export class PurchaseRequestService {
   deletePurchaseRequest(id: number): void {
     this.purchaseRequests = this.purchaseRequests.filter(pr => pr.id !== id);
   }
-  //constructor() {}
- /*  private apiUrl = 'YOUR_API_URL_HERE/purchase-requests'; // Replace with your API endpoint
-  getPurchaseRequestById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
-  } */
+
+  // Load purchase requests from localStorage
+  loadPurchaseRequests(): void {
+    const storedRequests = localStorage.getItem('purchaseRequests');
+    if (storedRequests) {
+      this.purchaseRequests = JSON.parse(storedRequests);
+    }
+  }
 }

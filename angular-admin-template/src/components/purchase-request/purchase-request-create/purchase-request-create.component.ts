@@ -229,7 +229,11 @@ export class PurchaseRequestCreateComponent implements AfterViewInit {
   deleteItem(index: number): void {
     this.purchaseRequest.items.splice(index, 1);
   }
-  
+    // Method to get the product name by its ID from localStorage
+    getProductById(productId: number): any {
+      const numericProductId = Number(productId); // Convert to number
+      return this.products.find((product) => product.id === numericProductId);
+    }
     // Initialize Select2
    
 

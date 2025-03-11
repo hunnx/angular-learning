@@ -9,6 +9,7 @@ export class CategoryService {
   private categories = [{ id: 1, name: 'Category 1' }, { id: 2, name: 'Category 2' }];
   categoryService: any;
   private currentId = 3;
+  
   getCategories() {
     return this.categories;
   }
